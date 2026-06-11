@@ -31,7 +31,7 @@ app.get('/IMG_20251120_154135_333.png', (req, res) => {
 });
 
 // SPA fallback - serve index.html for any non-API route
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
     if (req.path.startsWith('/api')) return res.status(404).send('Not found');
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
