@@ -25,11 +25,6 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/contact', contactRoutes);
 app.use('/api/projects', projectRoutes);
 
-// Serve top-level image if referenced from frontend (keeps original image in project root)
-app.get('/IMG_20251120_154135_333.png', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'IMG_20251120_154135_333.png'));
-});
-
 // SPA fallback - serve index.html for any non-API route
 app.use((req, res) => {
     if (req.path.startsWith('/api')) {
