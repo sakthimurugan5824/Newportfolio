@@ -1,0 +1,131 @@
+/* Custom CSS over Tailwind */
+:root {
+  --nav-height: 80px;
+}
+
+/* Glassmorphism Classes */
+.glass-navbar {
+  background: rgba(15, 17, 21, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Typography Extensions */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Navigation Links Animation */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #3b82f6;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Typing Effect Cursor */
+.cursor {
+  display: inline-block;
+  width: 3px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Scroll Reveal Animations */
+.reveal-up, .reveal-left, .reveal-right {
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.reveal-up {
+  transform: translateY(50px);
+}
+
+.reveal-left {
+  transform: translateX(-50px);
+}
+
+.reveal-right {
+  transform: translateX(50px);
+}
+
+.reveal-up.active, 
+.reveal-left.active, 
+.reveal-right.active {
+  opacity: 1;
+  transform: translate(0);
+}
+
+/* Skill Tags */
+.skill-tag {
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #d1d5db;
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.5);
+  color: #60a5fa;
+  transform: translateY(-2px);
+}
+
+/* Timeline specific */
+.timeline-item:hover .ring-4 {
+  background-color: #a855f7;
+}
+
+/* Skill progress setup for JS */
+.skill-progress {
+  width: 0;
+  transition: width 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f1115;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
