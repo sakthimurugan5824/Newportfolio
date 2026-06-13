@@ -1,8 +1,8 @@
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const path = require('path');
 
 const contactRoutes = require('./routes/contact');
 const projectRoutes = require('./routes/projects');
@@ -35,10 +35,18 @@ app.use((req, res) => {
 
 // Database connection
 const mongoURI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/portfolio';
-mongoose.connect(mongoURI)
-.then(() => console.log('Connected to MongoDB'))
-.catch((err) => console.error('MongoDB connection error:', err));
+const mongoSource = process.env.MONGO_URI ? 'environment variable' : 'local fallback';
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+console.log(`MongoDB connection source: ${mongoSource}`);
+
+mongoose.connect(mongoURI)
+    .then(() => {
+        console.log('Connected to MongoDB');
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
+        });
+    })
+    .catch((err) => {
+        console.error('MongoDB connection error:', err);
+        process.exit(1);
+    });
