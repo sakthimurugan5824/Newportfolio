@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     const API_URL = isDevelopment 
         ? 'http://localhost:5000/api' 
-        : `${location.protocol}//${location.host}/api`;
+        : 'https://newportfolio-ds4r.onrender.com/api';
 
     // Fetch and render projects
     async function fetchProjects() {
